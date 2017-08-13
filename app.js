@@ -1,12 +1,13 @@
 var express = require('express');
 var app = express();
-var db = require('mongoose');
+// var mongoose = require('mongoose');
+var { mongoose } = require('./db/mongoose');
+var controller = require('./routes/Controller');
 
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3000;
+app.use('/api', controller);
 
-db.connect('mongodb://perp:daba8MN90,@ds145293.mlab.com:45293/contact-list');
-
-app.listen(port, function() {
+app.listen(port, function () {
   console.log('Server running on port ' + port);
 });
 
