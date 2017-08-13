@@ -23,8 +23,8 @@ router.post('/api', (req, res) => {
 });
 
 router.get('/api', (req, res) => {
-  ContactList.find().then((lists) => {
-    res.send({ lists });
+  ContactList.find().then((contacts) => {
+    res.send({ contacts });
   }, (e) => {
     res.status(400).send(e);
   });
