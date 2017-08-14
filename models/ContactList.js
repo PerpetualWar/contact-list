@@ -24,7 +24,7 @@ var ContactListSchema = new mongoose.Schema({
     required: false,
     trim: false,
     minlength: 1
-  },
+  }
 });
 mongoose.model('ContactList', ContactListSchema);
 
