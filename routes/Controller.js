@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   ContactList.find().then((contacts) => {
-    res.send( contacts );
+    res.send(contacts);
   }, (e) => {
     res.status(400).send(e);
   });
