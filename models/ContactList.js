@@ -13,9 +13,9 @@ var ContactListSchema = new mongoose.Schema({
     trim: true,
     minlength: 1
   },
-  password: {
+  address: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     minlength: 1
   },
