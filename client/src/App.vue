@@ -22,7 +22,9 @@
         <button class="btn btn-danger" @click="deleteContacts">Delete Contact</button>
         <button class="btn btn-primary" @click="updateContacts">Update Contact</button>
       </div>
-    </div><br><br>
+    </div>
+    <br>
+    <br>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="alert alert-warning text-center">Click Name to select an item</div>
@@ -30,40 +32,13 @@
     </div>
     <br>
     <br>
-    <div class="row">
-      <div class="col-xs-3">
-        <h2 class="text-center">Name</h2>
-        <br>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-action" v-for="(c, index) in contactsArr" @click="loadId(index)">{{ c.name }}</li>
-        </ul>
-      </div>
-      <div class="col-xs-3">
-        <h2 class="text-center">Email</h2>
-        <br>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-action" v-for="c in contactsArr">{{ c.email }}</li>
-        </ul>
-      </div>
-      <div class="col-xs-3">
-        <h2 class="text-center">Phone</h2>
-        <br>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-action" v-for="c in contactsArr">{{ c.phone }}</li>
-        </ul>
-      </div>
-      <div class="col-xs-3">
-        <h2 class="text-center">Address</h2>
-        <br>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-action" v-for="c in contactsArr">{{ c.address }}</li>
-        </ul>
-      </div>
-    </div>
+    <app-list :contactsArr="contactsArr" :loadId="loadId" :contacts="contacts" :paginate="paginate"></app-list>
   </div>
 </template>
 
 <script>
+import List from './List.vue';
+
 export default {
   data() {
     return {
@@ -74,7 +49,8 @@ export default {
         address: ''
       },
       contactsArr: [],
-      id: ''
+      id: '',
+      paginate: ['items']
     };
   },
   methods: {
@@ -133,6 +109,9 @@ export default {
       }, error => console.log(error));
 
     }
+  },
+  components: {
+    appList: List
   }
 }
 </script>
