@@ -20,7 +20,7 @@
         <button class="btn btn-success" @click="getContactList">Show All Contacts</button>
         <button class="btn btn-primary" @click="postContactList">Add Contact</button>
         <button class="btn btn-danger" @click="deleteContacts">Delete Contact</button>
-        <button class="btn btn-primary" @click="updateContacts">Update Contact</button>
+        <button class="btn btn-info" @click="updateContacts">Update Contact</button>
       </div>
     </div>
     <br>
@@ -32,7 +32,7 @@
     </div>
     <br>
     <br>
-    <app-list :contactsArr="contactsArr" :loadId="loadId" :contacts="contacts" :paginate="paginate"></app-list>
+    <app-list :contactsArr="contactsArr" :loadId="loadId" :paginate="paginate"></app-list>
   </div>
 </template>
 
@@ -70,6 +70,7 @@ export default {
         this.contacts.phone = phone;
         this.contacts.address = address;
         console.log(id);
+        console.log(res[index]);
       });
     },
     getContactList() {
@@ -121,4 +122,68 @@ body {
   background-color: #228288;
   margin-top: 40px;
 }
+
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.paginate-list {
+  width: 159px;
+  margin: 0 auto;
+  text-align: left;
+}
+.paginate-list li {
+  display: block;
+}
+.paginate-list li:before {
+  content: '⚬ ';
+  font-weight: bold;
+  color: slategray;
+}
+
+.paginate-links.items {
+  user-select: none;
+}
+.paginate-links.items a {
+  cursor: pointer;
+}
+.paginate-links.items li.active a {
+  font-weight: bold;
+}
+.paginate-links.items li.next:before {
+  content: ' | ';
+  margin-right: 13px;
+  color: #ddd;
+}
+.paginate-links.items li.disabled a {
+  color: #ccc;
+  cursor: no-drop;
+}
+
+a {
+  color: #fcf8e3;
+}
+
 </style>
